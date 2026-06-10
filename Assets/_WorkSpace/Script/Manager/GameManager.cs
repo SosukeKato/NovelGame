@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    static GameManager instance { get; set; }
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    /// <summary>
+    /// シナリオの進行度をGameManagerに譲渡
+    /// ScenarioManagerに移動予定
+    /// </summary>
+    public void ScenarioProgressTransfer()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// セーブデータとして現在の進行度を譲渡する
+    /// </summary>
+    public void SaveScenarioProgress()
     {
-        
+
+    }
+
+    /// <summary>
+    /// 対応するシナリオをScenarioManagerに譲渡
+    /// 引数にGameDataを追加して譲渡予定
+    /// </summary>
+    void ScenarioDataTransfer()
+    {
+
     }
 }
