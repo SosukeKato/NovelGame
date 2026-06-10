@@ -1,13 +1,19 @@
 using UnityEngine;
 
 [System.Serializable]
-public class NovelScenario
+public class Scenario
 {
-
+    public AudioClip BGM;
+    public AudioClip SE;
+    public Sprite BGImage;
+    public Sprite CharacterImage;
+    public string CharacterName;
+    public string ScenarioText;
 }
 
 [CreateAssetMenu(menuName = "GameData/Scenario",fileName = "NewScenarioData")]
 public class ChapterNovelScenario : ScriptableObject
 {
-
+    public int id;
+    public Scenario[] scenario;
 }
