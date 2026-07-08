@@ -8,6 +8,9 @@ public class ScenarioDataBase : ScriptableObject
 
     private Dictionary<int, ChapterNovelScenario> _chapterDictionary;
 
+    /// <summary>
+    /// ChapterDictionary‰Šú‰»ˆ—
+    /// </summary>
     public void InitDictionary()
     {
         _chapterDictionary = new Dictionary<int, ChapterNovelScenario>();
@@ -15,5 +18,15 @@ public class ScenarioDataBase : ScriptableObject
         {
             _chapterDictionary[chapter.id] = chapter;
         }
+    }
+
+    /// <summary>
+    /// w’è‚µ‚½ID‚ÌChapter‚ğæ“¾
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public ChapterNovelScenario GetChapter(int id)
+    {
+        return _chapterDictionary.TryGetValue(id, out ChapterNovelScenario chapter) ? chapter : null;
     }
 }
