@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// シナリオの進行度をGameManagerに譲渡
     /// </summary>
-    public void ScenarioProgressTransfer()
+    public void ScenarioProgressTransfer(int scenarioIndex, int commandIndex)
     {
         
     }
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
     /// </summary>
-    public void InGameResultTransfer()
+    public void InGameResultTransfer(int resultIndex)
     {
 
     }
