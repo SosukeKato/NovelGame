@@ -9,6 +9,7 @@ public class Scenario
     public Sprite CharacterImage;
     public string CharacterName;
     public string ScenarioText;
+    public bool StopBGM;
 }
 
 [CreateAssetMenu(menuName = "GameData/Scenario",fileName = "NewScenarioData")]
