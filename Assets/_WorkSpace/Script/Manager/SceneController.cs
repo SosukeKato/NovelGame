@@ -1,18 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static SceneController instance { get; set; }
+
+    void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// ScenarioSceneをロード
+    /// </summary>
+    public void LoadScenario()
     {
-        
+
+    }
+
+    /// <summary>
+    /// InGameSceneをロード
+    /// </summary>
+    public void LoadInGame()
+    {
+
+    }
+
+    /// <summary>
+    /// TitleSceneをロード
+    /// </summary>
+    public void LoadTitle()
+    {
+
     }
 }
