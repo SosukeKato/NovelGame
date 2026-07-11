@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class SceneController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        SceneManager.sceneLoaded += GameManager.instance.OnSceneLoaded;
     }
 
     /// <summary>
