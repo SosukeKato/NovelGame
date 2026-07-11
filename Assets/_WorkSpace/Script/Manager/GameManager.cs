@@ -58,11 +58,9 @@ public class GameManager : MonoBehaviour
     /// ‘Î‰‚·‚éƒVƒiƒŠƒI‚ğScenarioManager‚É÷“n
     /// ˆø”‚ÉGameData‚ğ’Ç‰Á‚µ‚Ä÷“n—\’è
     /// </summary>
-    public IEnumerator ScenarioDataTransfer()
+    public void ScenarioDataTransfer()
     {
-        yield return null;
 
-        Debug.Log("1f‚Ü‚Á‚ÄÀs");
     }
 
     /// <summary>
