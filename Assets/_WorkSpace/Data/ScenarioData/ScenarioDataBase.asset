@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8e9d999771e214c9391794e779db39, type: 3}
   m_Name: ScenarioDataBase
   m_EditorClassIdentifier: 
-  _chapters: []
+  _chapters:
+  - {fileID: 11400000, guid: 65c1ad92a9b6f2e4e83c55d2bee1490d, type: 2}
