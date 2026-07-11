@@ -1,9 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager instance { get; set; }
+    public static GameManager instance { get; set; }
 
     void Awake()
     {
@@ -57,9 +58,11 @@ public class GameManager : MonoBehaviour
     /// ‘Î‰‚·‚éƒVƒiƒŠƒI‚ğScenarioManager‚É÷“n
     /// ˆø”‚ÉGameData‚ğ’Ç‰Á‚µ‚Ä÷“n—\’è
     /// </summary>
-    public void ScenarioDataTransfer()
+    public IEnumerator ScenarioDataTransfer()
     {
+        yield return null;
 
+        Debug.Log("1f‚Ü‚Á‚ÄÀs");
     }
 
     /// <summary>
