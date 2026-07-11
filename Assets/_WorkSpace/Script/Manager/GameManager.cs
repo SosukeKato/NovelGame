@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// シナリオの進行度をGameManagerに譲渡
     /// </summary>
-    public void ScenarioProgressTransfer()
+    public void ScenarioProgressTransfer(int scenarioIndex, int commandIndex)
     {
         
     }
@@ -57,15 +58,17 @@ public class GameManager : MonoBehaviour
     /// 対応するシナリオをScenarioManagerに譲渡
     /// 引数にGameDataを追加して譲渡予定
     /// </summary>
-    public void ScenarioDataTransfer()
+    public IEnumerator ScenarioDataTransfer()
     {
+        yield return null;
 
+        Debug.Log("1fまって実行");
     }
 
     /// <summary>
     /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
     /// </summary>
-    public void InGameResultTransfer()
+    public void InGameResultTransfer(int resultIndex)
     {
 
     }
