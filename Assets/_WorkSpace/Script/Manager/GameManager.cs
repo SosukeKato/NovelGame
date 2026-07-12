@@ -1,10 +1,22 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
+[System.Serializable]
+public class GameData
+{
+    public int CurrentChapterID;
+    public int CurrentScenario;
+    public int CurrentCommand;
+    public int NextCommand;
+}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; set; }
+
+    public GameData _gameData = new();
+
+    [SerializeField] ScenarioDataBase _scenarioDataBase;
 
     void Awake()
     {
@@ -12,11 +24,9 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            _scenarioDataBase.InitDictionary();
         }
-        else
-        {
-            Destroy(this.gameObject);
-        }
+        else Destroy(this.gameObject);
     }
 
     /// <summary>
@@ -24,34 +34,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
-    public void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
-    }
-
-    /// <summary>
-    ///ゲーム開始時に選択した章に対応するシナリオを取得
-    /// </summary>
-    /// <param name="scenarioIndex">シナリオが入っている場所を参照(GameDataになる可能性あり)</param>
-    public void StartGame(int scenarioIndex)
-    {
-
-    }
-
-    /// <summary>
-    /// シナリオの進行度をGameManagerに譲渡
-    /// </summary>
-    public void ScenarioProgressTransfer(int scenarioIndex, int commandIndex)
-    {
-        
-    }
-
-    /// <summary>
-    /// セーブデータとして現在の進行度を譲渡する
-    /// </summary>
-    public void SaveScenarioProgress()
-    {
-
+        if (scene.name == "ScenarioScene")
+            ScenarioDataTransfer();
     }
 
     /// <summary>
@@ -60,14 +46,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ScenarioDataTransfer()
     {
-
+        if (_gameData.NextCommand != 0)
+        {
+            ScenarioManager.instance.JumpCommand(_gameData.NextCommand);
+            _gameData.NextCommand = 0;
+        }
+        else ScenarioManager.instance.StartScenarioScene(_gameData.CurrentChapterID);
     }
 
     /// <summary>
     /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
     /// </summary>
-    public void InGameResultTransfer(int resultIndex)
+    public void InGameResultTransfer(int battleResult)
     {
-
+        _gameData.NextCommand = battleResult;
     }
 }
