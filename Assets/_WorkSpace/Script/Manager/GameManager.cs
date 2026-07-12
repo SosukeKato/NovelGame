@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public GameData _gameData = new();
 
-    [SerializeField]ScenarioDataBase _scenarioDataBase;
+    [SerializeField] ScenarioDataBase _scenarioDataBase;
 
     void Awake()
     {
@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
-    public void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-
+        if (scene.name == "ScenarioScene")
+            ScenarioDataTransfer();
     }
 
     /// <summary>
@@ -45,14 +46,19 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ScenarioDataTransfer()
     {
-
+        if (_gameData.NextCommand != 0)
+        {
+            ScenarioManager.instance.JumpCommand(_gameData.NextCommand);
+            _gameData.NextCommand = 0;
+        }
+        else ScenarioManager.instance.StartScenarioScene(_gameData.CurrentChapterID);
     }
 
     /// <summary>
     /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
     /// </summary>
-    public void InGameResultTransfer(int resultIndex)
+    public void InGameResultTransfer(int battleResult)
     {
-
+        _gameData.NextCommand = battleResult;
     }
 }
