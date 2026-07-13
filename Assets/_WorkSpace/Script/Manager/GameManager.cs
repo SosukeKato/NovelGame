@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
-public class GameData
+public class StashGameData
 {
     public int CurrentChapterID;
     public int CurrentScenario;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; set; }
 
-    public GameData _gameData = new();
+    public StashGameData GameData = new();
 
     [SerializeField] ScenarioDataBase _scenarioDataBase;
 
@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
     /// <param name="mode"></param>
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "ScenarioScene")
-            ScenarioDataTransfer();
+        if (scene.name == "ScenarioScene") ScenarioDataTransfer();
     }
 
     /// <summary>
@@ -46,19 +45,11 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ScenarioDataTransfer()
     {
-        if (_gameData.NextCommand != 0)
+        if (GameData.NextCommand != 0)
         {
-            ScenarioManager.instance.JumpCommand(_gameData.NextCommand);
-            _gameData.NextCommand = 0;
+            ScenarioManager.instance.JumpCommand(GameData.NextCommand);
+            GameData.NextCommand = 0;
         }
-        else ScenarioManager.instance.StartScenarioScene(_gameData.CurrentChapterID);
-    }
-
-    /// <summary>
-    /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
-    /// </summary>
-    public void InGameResultTransfer(int battleResult)
-    {
-        _gameData.NextCommand = battleResult;
+        else ScenarioManager.instance.StartScenarioScene(GameData.CurrentChapterID);
     }
 }
