@@ -17,7 +17,7 @@ public class BattleManager : MonoBehaviour
 
     public void BattleResultTransfer(int battleResult)
     {
-        GameManager.instance._gameData.NextCommand = battleResult;
+        GameManager.instance.GameData.NextCommand = battleResult;
         SceneController.instance.LoadScenario();
     }
 }
