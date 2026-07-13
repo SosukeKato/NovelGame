@@ -36,8 +36,7 @@ public class GameManager : MonoBehaviour
     /// <param name="mode"></param>
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "ScenarioScene")
-            ScenarioDataTransfer();
+        if (scene.name == "ScenarioScene") ScenarioDataTransfer();
     }
 
     /// <summary>
@@ -52,13 +51,5 @@ public class GameManager : MonoBehaviour
             _gameData.NextCommand = 0;
         }
         else ScenarioManager.instance.StartScenarioScene(_gameData.CurrentChapterID);
-    }
-
-    /// <summary>
-    /// インゲームのリザルトをInGameManagerからGameManagerに譲渡
-    /// </summary>
-    public void InGameResultTransfer(int battleResult)
-    {
-        _gameData.NextCommand = battleResult;
     }
 }
