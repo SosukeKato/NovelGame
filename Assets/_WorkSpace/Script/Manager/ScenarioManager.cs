@@ -8,8 +8,8 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField, Header("シナリオデータベース")] ScenarioDataBase _scenarioDataBase;
     [SerializeField, Header("シナリオ出力用テキスト")] TextMeshProUGUI _scenarioBox;
 
-    ChapterNovelScenario _currentScenario;
-    int _currentCommand = 0;
+    ChapterNovelScenario _currentChapter;
+    int _currentScenario = 0;
     int _scenarioMoveAmount = 1;
     bool _isProcessing;
 
@@ -25,8 +25,8 @@ public class ScenarioManager : MonoBehaviour
     /// <param name="chapter"></param>
     public void StartScenarioScene(int id)
     {
-        _currentScenario = _scenarioDataBase.GetChapter(id);
-        DisplayScenario();
+        _currentChapter = _scenarioDataBase.GetChapter(id);
+        ReflectionScenario();
     }
 
     /// <summary>
@@ -36,8 +36,8 @@ public class ScenarioManager : MonoBehaviour
     {
         if (_isProcessing) return;
 
-        _currentCommand += _scenarioMoveAmount;
-        DisplayScenario();
+        _currentScenario += _scenarioMoveAmount;
+        ReflectionScenario();
     }
 
     /// <summary>
@@ -55,16 +55,16 @@ public class ScenarioManager : MonoBehaviour
     /// <param name="targetCommand"></param>
     public void JumpCommand(int targetCommand)
     {
-        _currentCommand = targetCommand;
-        DisplayScenario();
+        _currentScenario = targetCommand;
+        ReflectionScenario();
     }
 
     /// <summary>
     /// 現在のシナリオを表示
     /// </summary>
-    void DisplayScenario()
+    void ReflectionScenario()
     {
-        _scenarioBox.text = _currentScenario.scenario[_currentCommand].ScenarioText;
+        UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.scenario[_currentScenario].ScenarioText);
     }
 
     void ExecuteScenario(Scenario command)
