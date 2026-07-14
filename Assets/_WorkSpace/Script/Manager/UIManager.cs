@@ -26,6 +26,8 @@ public class UIManager : MonoBehaviour
     /// <param name="text"></param>
     public void DisplayText(TextMeshProUGUI box,string text)
     {
+        if (box == null || text == null) return;
+
         box.text = text;
     }
 
@@ -36,6 +38,15 @@ public class UIManager : MonoBehaviour
     /// <param name="imageBox"></param>
     public void DisplayImage(Sprite character, Image imageBox)
     {
+        if (character == null || imageBox == null) return;
+
         imageBox.sprite = character;
+    }
+
+    public void DisplayCharacterName(TextMeshProUGUI box, string name)
+    {
+        if (box == null || name == null) return;
+        
+        box.text = name;
     }
 }
