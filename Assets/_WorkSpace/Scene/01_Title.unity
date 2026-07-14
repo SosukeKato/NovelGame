@@ -1380,9 +1380,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8228c61198aaa044bcf2b4446ab591f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scenarioDataBase: {fileID: 11400000, guid: 218ccd567e1a52745878a5fad951e70b, type: 2}
   _firstUI: {fileID: 2099992910}
   _secondUI: {fileID: 211662751}
   _thirdUI: {fileID: 1393234863}
+  _characterImageBox: {fileID: 1167430302}
+  _characterInfomationBox: {fileID: 1405508462}
 --- !u!4 &1519434224
 Transform:
   m_ObjectHideFlags: 0
