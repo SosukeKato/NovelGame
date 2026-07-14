@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,8 +19,34 @@ public class UIManager : MonoBehaviour
         else Destroy(this.gameObject);
     }
 
+    /// <summary>
+    /// 画面にテキストを表示
+    /// </summary>
+    /// <param name="box"></param>
+    /// <param name="text"></param>
     public void DisplayText(TextMeshProUGUI box,string text)
     {
+        if (box == null || text == null) return;
+
         box.text = text;
+    }
+
+    /// <summary>
+    /// イメージにキャラクターの見た目を表示
+    /// </summary>
+    /// <param name="character"></param>
+    /// <param name="imageBox"></param>
+    public void DisplayImage(Sprite character, Image imageBox)
+    {
+        if (character == null || imageBox == null) return;
+
+        imageBox.sprite = character;
+    }
+
+    public void DisplayCharacterName(TextMeshProUGUI box, string name)
+    {
+        if (box == null || name == null) return;
+        
+        box.text = name;
     }
 }
