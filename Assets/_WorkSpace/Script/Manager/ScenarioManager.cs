@@ -66,9 +66,9 @@ public class ScenarioManager : MonoBehaviour
     /// </summary>
     void ReflectionScenario()
     {
-        UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.scenario[_currentScenario].ScenarioText);
-        UIManager.Instance.DisplayCharacterName(_scenarioBox, _currentChapter.scenario[_currentScenario].CharacterName);
-        UIManager.Instance.DisplayImage(_currentChapter.scenario[_currentScenario].CharacterImage, _characterImageBox);
+        UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.Scenario[_currentScenario].ScenarioText);
+        UIManager.Instance.DisplayCharacterName(_scenarioBox, _currentChapter.Scenario[_currentScenario].CharacterName);
+        UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].CharacterImage, _characterImageBox);
     }
 
     void ExecuteScenario(Scenario command)
