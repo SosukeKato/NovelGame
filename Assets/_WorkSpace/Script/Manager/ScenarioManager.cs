@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScenarioManager : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField, Header("シナリオデータベース")] ScenarioDataBase _scenarioDataBase;
     [SerializeField, Header("シナリオ出力用テキスト")] TextMeshProUGUI _scenarioBox;
+    [SerializeField, Header("キャラクター立ち絵出力用イメージ")] Image _characterImageBox;
 
     ChapterNovelScenario _currentChapter;
     int _currentScenario = 0;
@@ -65,6 +67,8 @@ public class ScenarioManager : MonoBehaviour
     void ReflectionScenario()
     {
         UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.scenario[_currentScenario].ScenarioText);
+        UIManager.Instance.DisplayCharacterName(_scenarioBox, _currentChapter.scenario[_currentScenario].CharacterName);
+        UIManager.Instance.DisplayImage(_currentChapter.scenario[_currentScenario].CharacterImage, _characterImageBox);
     }
 
     void ExecuteScenario(Scenario command)
