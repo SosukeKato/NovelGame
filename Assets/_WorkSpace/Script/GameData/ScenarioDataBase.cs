@@ -16,7 +16,7 @@ public class ScenarioDataBase : ScriptableObject
         _chapterDictionary = new Dictionary<int, ChapterNovelScenario>();
         foreach (ChapterNovelScenario chapter in _chapters)
         {
-            _chapterDictionary[chapter.id] = chapter;
+            _chapterDictionary[chapter.ID] = chapter;
         }
     }
 
