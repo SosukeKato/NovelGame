@@ -24,7 +24,7 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadScenario()
     {
-        SceneManager.LoadScene("ScenarioScene");
+        SceneManager.LoadScene("02_Scenario");
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadBattle()
     {
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("03_Battle");
     }
 
     /// <summary>
@@ -40,6 +40,6 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadTitle()
     {
-        SceneManager.LoadScene("TitleScene");
+        SceneManager.LoadScene("01_Title");
     }
 }
