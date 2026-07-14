@@ -11,13 +11,12 @@ public class SceneController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
+            SceneManager.sceneLoaded += GameManager.instance.OnSceneLoaded;
         }
         else
         {
             Destroy(this.gameObject);
         }
-
-        SceneManager.sceneLoaded += GameManager.instance.OnSceneLoaded;
     }
 
     /// <summary>
@@ -25,15 +24,15 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadScenario()
     {
-
+        SceneManager.LoadScene("02_Scenario");
     }
 
     /// <summary>
     /// InGameSceneÇÉçÅ[Éh
     /// </summary>
-    public void LoadInGame()
+    public void LoadBattle()
     {
-
+        SceneManager.LoadScene("03_Battle");
     }
 
     /// <summary>
@@ -41,6 +40,6 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadTitle()
     {
-
+        SceneManager.LoadScene("01_Title");
     }
 }
