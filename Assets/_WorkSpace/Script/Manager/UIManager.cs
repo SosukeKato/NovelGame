@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; set; }
 
-    [SerializeField] ScenarioDataBase _scenarioDataBase;
 
     void Awake()
     {
@@ -14,7 +13,6 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
-            _scenarioDataBase.InitDictionary();
         }
         else Destroy(this.gameObject);
     }
