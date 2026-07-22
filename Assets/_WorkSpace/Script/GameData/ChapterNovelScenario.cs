@@ -24,8 +24,8 @@ public class BattleData
 {
     public Sprite EnemyImage;
     public Sprite CharacterImage;
-    public string CharacterAction;
-    public bool IsCorrectOption;
+    public string[] CharacterAction;
+    public bool[] IsCorrectOption;
 }
 
 [CreateAssetMenu(menuName = "GameData/Scenario",fileName = "NewScenarioData")]
@@ -33,6 +33,6 @@ public class ChapterNovelScenario : ScriptableObject
 {
     public int ID;
     public CharacterData Character;
+    public BattleData Battle;
     public Scenario[] Scenario;
-    public BattleData[] Battle;
 }
