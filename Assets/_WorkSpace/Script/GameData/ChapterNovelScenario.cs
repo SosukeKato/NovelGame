@@ -7,6 +7,7 @@ public class Scenario
     public AudioClip SE;
     public Sprite BGImage;
     public Sprite CharacterImage;
+    public Sprite EnemyImage;
     public string CharacterName;
     public string ScenarioText;
     public bool StopBGM;
@@ -22,6 +23,7 @@ public class CharacterData
 [System.Serializable]
 public class BattleData
 {
+    public AudioClip BGM;
     public Sprite EnemyImage;
     public Sprite CharacterImage;
     public string[] CharacterAction;
