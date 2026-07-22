@@ -9,6 +9,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField, Header("シナリオデータベース")] ScenarioDataBase _scenarioDataBase;
     [SerializeField, Header("シナリオ出力用テキスト")] TextMeshProUGUI _scenarioBox;
     [SerializeField, Header("キャラクター立ち絵出力用イメージ")] Image _characterImageBox;
+    [SerializeField, Header("エネミー立ち絵出力用イメージ")] Image _enemyImageBox;
 
     ChapterNovelScenario _currentChapter;
     int _currentScenario = 0;
@@ -69,6 +70,7 @@ public class ScenarioManager : MonoBehaviour
         UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.Scenario[_currentScenario].ScenarioText);
         UIManager.Instance.DisplayCharacterName(_scenarioBox, _currentChapter.Scenario[_currentScenario].CharacterName);
         UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].CharacterImage, _characterImageBox);
+        //UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].EnemyImage,_enemyImageBox);
     }
 
     void ExecuteScenario(Scenario command)
