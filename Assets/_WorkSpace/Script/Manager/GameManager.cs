@@ -8,6 +8,7 @@ public class StashGameData
     public int CurrentScenario;
     public int CurrentCommand;
     public int NextCommand;
+    public bool IsBattleWin;
 }
 
 public class GameManager : MonoBehaviour
