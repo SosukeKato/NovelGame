@@ -7,6 +7,7 @@ public class BattleManager : MonoBehaviour
     public int CurrentAnalysisLevel => _currentAnalysisLevel;  //BattleScene上のUI実装に使用
     public int CurrentDangerLevel => _currentDangerLevel;      //BattleScene上のUI実装に使用
 
+    ChapterNovelScenario _chapter;
     int _currentAnalysisLevel;
     int _currentDangerLevel;
 
@@ -23,10 +24,9 @@ public class BattleManager : MonoBehaviour
 
     public void BattleResultTransfer(bool isBattleWin)
     {
-        if (isBattleWin)
-            GameManager.instance.GameData.NextCommand = GameManager.instance.GameData.CurrentCommand++;
-        //else
-        //Dictionaryから参照、あらかじめ決められた番号にジャンプ。ジャンプする数字をNextCommandに代入処理を追加する
+        if (isBattleWin) GameManager.instance.GameData.NextCommand = GameManager.instance.GameData.CurrentCommand++;
+        else GameManager.instance.GameData.NextCommand = _chapter.JumpNumber;
+
         SceneController.instance.LoadScenario();
     }
 }
