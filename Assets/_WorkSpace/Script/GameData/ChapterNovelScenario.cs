@@ -23,11 +23,15 @@ public class CharacterData
 [System.Serializable]
 public class BattleData
 {
-    public AudioClip BGM;
-    public Sprite EnemyImage;
+    public AudioClip BattleBGM;
+    public Sprite BattleEnemyImage;
     public Sprite CharacterImage;
-    public string[] CharacterAction;
-    public bool[] IsCorrectOption;
+    public string CharacterAction;
+    public string AcceptText;
+    public string DeclineText;
+    public int AnalysisUpAmount;
+    public int DangerUpAmount;
+    public bool IsAcceptCorrect;
 }
 
 [CreateAssetMenu(menuName = "GameData/Scenario",fileName = "NewScenarioData")]
@@ -35,6 +39,6 @@ public class ChapterNovelScenario : ScriptableObject
 {
     public int ID;
     public CharacterData Character;
-    public BattleData Battle;
+    public BattleData[] Battle;
     public Scenario[] Scenario;
 }
