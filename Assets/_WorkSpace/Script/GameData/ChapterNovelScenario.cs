@@ -38,6 +38,7 @@ public class BattleData
 public class ChapterNovelScenario : ScriptableObject
 {
     public int ID;
+    public int JumpNumber;
     public CharacterData Character;
     public BattleData[] Battle;
     public Scenario[] Scenario;
