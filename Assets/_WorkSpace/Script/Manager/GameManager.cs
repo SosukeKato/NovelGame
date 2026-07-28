@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     /// <param name="mode"></param>
     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "ScenarioScene") ScenarioDataTransfer();
+        if (scene.name == "02_Scenario") ScenarioDataTransfer();
+        if (scene.name == "03_Battle") BattleManager.instance.StartBattle(GameData.CurrentChapterID);
     }
 
     /// <summary>
