@@ -40,4 +40,14 @@ public class UIManager : MonoBehaviour
 
         imageBox.sprite = image;
     }
+
+    /// <summary>
+    /// UIのゲージを更新する
+    /// </summary>
+    /// <param name="gauge"></param>
+    /// <param name="amount"></param>
+    public void UpdateGauge(Image gauge ,int amount)
+    {
+        gauge.fillAmount = amount;
+    }
 }
