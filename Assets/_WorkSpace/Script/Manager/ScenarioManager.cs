@@ -45,8 +45,8 @@ public class ScenarioManager : MonoBehaviour
 
         _currentScenario += SCENARIO_MOVE_AMOUNT;
 
-        //if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 1) SceneController.instance.LoadTitle();
-        //if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 3) SceneController.instance.LoadBattle();
+        if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 1) SceneController.instance.LoadTitle();
+        if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 3) SceneController.instance.LoadBattle();
 
         ReflectionScenario();
     }
