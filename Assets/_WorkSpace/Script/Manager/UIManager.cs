@@ -32,19 +32,12 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// イメージにキャラクターの見た目を表示
     /// </summary>
-    /// <param name="character"></param>
+    /// <param name="image"></param>
     /// <param name="imageBox"></param>
-    public void DisplayImage(Sprite character, Image imageBox)
+    public void DisplayImage(Sprite image, Image imageBox)
     {
-        if (character == null || imageBox == null) return;
+        if (image == null || imageBox == null) return;
 
-        imageBox.sprite = character;
-    }
-
-    public void DisplayCharacterName(TextMeshProUGUI box, string name)
-    {
-        if (box == null || name == null) return;
-        
-        box.text = name;
+        imageBox.sprite = image;
     }
 }
