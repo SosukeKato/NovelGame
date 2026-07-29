@@ -11,6 +11,7 @@ public class Scenario
     public string CharacterName;
     [TextArea(3, 10)] public string ScenarioText;
     public bool StopBGM;
+    public int MoveSceneNumber;
 }
 
 [System.Serializable]
