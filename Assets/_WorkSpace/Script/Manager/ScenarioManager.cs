@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScenarioManager : MonoBehaviour
@@ -8,13 +9,16 @@ public class ScenarioManager : MonoBehaviour
 
     [SerializeField, Header("シナリオデータベース")] ScenarioDataBase _scenarioDataBase;
     [SerializeField, Header("シナリオ出力用テキスト")] TextMeshProUGUI _scenarioBox;
+    [SerializeField, Header("キャラクター名出力用テキスト")] TextMeshProUGUI _nameBox;
     [SerializeField, Header("キャラクター立ち絵出力用イメージ")] Image _characterImageBox;
     [SerializeField, Header("エネミー立ち絵出力用イメージ")] Image _enemyImageBox;
+    [SerializeField, Header("背景出力用イメージ")] Image _backGroundImageBox;
 
     ChapterNovelScenario _currentChapter;
     int _currentScenario = 0;
-    int _scenarioMoveAmount = 1;
     bool _isProcessing;
+
+    const int SCENARIO_MOVE_AMOUNT = 1;
 
     void Awake()
     {
@@ -39,7 +43,11 @@ public class ScenarioManager : MonoBehaviour
     {
         if (_isProcessing) return;
 
-        _currentScenario += _scenarioMoveAmount;
+        _currentScenario += SCENARIO_MOVE_AMOUNT;
+
+        if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 1) SceneController.instance.LoadTitle();
+        if (_currentChapter.Scenario[_currentScenario].MoveSceneNumber == 3) SceneController.instance.LoadBattle();
+
         ReflectionScenario();
     }
 
@@ -49,7 +57,7 @@ public class ScenarioManager : MonoBehaviour
     /// </summary>
     public void ScenarioProgressTransfer()
     {
-
+        GameManager.instance.GameData.CurrentCommand = _currentScenario;
     }
 
     /// <summary>
@@ -67,14 +75,10 @@ public class ScenarioManager : MonoBehaviour
     /// </summary>
     void ReflectionScenario()
     {
-        UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.Scenario[_currentScenario].ScenarioText);
-        UIManager.Instance.DisplayCharacterName(_scenarioBox, _currentChapter.Scenario[_currentScenario].CharacterName);
+        UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].BGImage, _backGroundImageBox);
         UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].CharacterImage, _characterImageBox);
-        //UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].EnemyImage,_enemyImageBox);
-    }
-
-    void ExecuteScenario(Scenario command)
-    {
-
+        UIManager.Instance.DisplayImage(_currentChapter.Scenario[_currentScenario].EnemyImage,_enemyImageBox);
+        UIManager.Instance.DisplayText(_nameBox, _currentChapter.Scenario[_currentScenario].CharacterName);
+        UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.Scenario[_currentScenario].ScenarioText);
     }
 }
