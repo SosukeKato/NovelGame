@@ -9,15 +9,16 @@ public class Scenario
     public Sprite CharacterImage;
     public Sprite EnemyImage;
     public string CharacterName;
-    public string ScenarioText;
+    [TextArea(3, 10)] public string ScenarioText;
     public bool StopBGM;
+    public int MoveSceneNumber;
 }
 
 [System.Serializable]
 public class CharacterData
 {
     public Sprite CharacterIamge;
-    public string CharacterInfomation;
+    [TextArea(5, 10)] public string CharacterInfomation;
 }
 
 [System.Serializable]
@@ -26,15 +27,15 @@ public class BattleData
     public AudioClip BattleBGM;
     public Sprite BattleEnemyImage;
     public Sprite CharacterImage;
-    public string CharacterAction;
-    public string AcceptText;
-    public string DeclineText;
+    [TextArea(3, 10)] public string CharacterAction;
+    [TextArea(3, 10)] public string AcceptText;
+    [TextArea(3, 10)] public string DeclineText;
     public int AnalysisUpAmount;
     public int DangerUpAmount;
     public bool IsAcceptCorrect;
 }
 
-[CreateAssetMenu(menuName = "GameData/Scenario",fileName = "NewScenarioData")]
+[CreateAssetMenu(menuName = "GameData/Scenario", fileName = "NewScenarioData")]
 public class ChapterNovelScenario : ScriptableObject
 {
     public int ID;
