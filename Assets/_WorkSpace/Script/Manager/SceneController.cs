@@ -32,6 +32,7 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void LoadBattle()
     {
+        ScenarioManager.instance.ScenarioProgressTransfer();
         SceneManager.LoadScene("03_Battle");
     }
 
