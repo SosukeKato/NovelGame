@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class BattleManager : MonoBehaviour
     public int CurrentDangerLevel => _currentDangerLevel;      //BattleSceneè„ÇÃUIé¿ëïÇ…égóp
 
     [SerializeField] ScenarioDataBase _scenarioDataBase;
+
+    [SerializeField] Image _analysisLevelGauge;
+    [SerializeField] Image _dangerLevelGauge;
 
     ChapterNovelScenario _chapter;
     int _currentAnalysisLevel;
@@ -20,11 +24,6 @@ public class BattleManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(this.gameObject);
-    }
-
-    void Update()
-    {
-
     }
 
     /// <summary>
@@ -47,8 +46,16 @@ public class BattleManager : MonoBehaviour
         BattleData data = _chapter.Battle[_currentBattleTurn];
         bool isCorrect = data.IsAcceptCorrect == isAccept;
 
-        if (isCorrect) _currentAnalysisLevel += data.AnalysisUpAmount;
-        else _currentDangerLevel += data.DangerUpAmount;
+        if (isCorrect)
+        {
+            _currentAnalysisLevel += data.AnalysisUpAmount;
+            UIManager.Instance.UpdateGauge(_analysisLevelGauge, _currentAnalysisLevel);
+        }
+        else
+        {
+            _currentDangerLevel += data.DangerUpAmount;
+            UIManager.Instance.UpdateGauge(_dangerLevelGauge, _currentDangerLevel);
+        }
 
         if (_currentAnalysisLevel >= PARAMETER_MAX) BattleResultTransfer(true);
         else if (_currentDangerLevel >= PARAMETER_MAX) BattleResultTransfer(false);
