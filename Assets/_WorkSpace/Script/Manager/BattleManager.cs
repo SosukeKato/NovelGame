@@ -26,11 +26,6 @@ public class BattleManager : MonoBehaviour
         else Destroy(this.gameObject);
     }
 
-    void Update()
-    {
-
-    }
-
     /// <summary>
     /// バトル開始時にチャプターの情報の取得や変数の初期化等を行う
     /// </summary>
