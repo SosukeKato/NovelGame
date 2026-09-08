@@ -38,6 +38,8 @@ public class BattleManager : MonoBehaviour
         _currentDangerLevel = 0;
         _currentBattleTurn = 0;
         UIManager.Instance.DisplayImage(_chapter.Battle[0].BattleEnemyImage, _enemyImageBox);
+        UIManager.Instance.UpdateGauge(_analysisLevelGauge, _currentAnalysisLevel);
+        UIManager.Instance.UpdateGauge(_dangerLevelGauge, _currentDangerLevel);
     }
 
     /// <summary>
