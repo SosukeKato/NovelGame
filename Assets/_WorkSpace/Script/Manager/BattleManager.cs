@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] Image _analysisLevelGauge;
     [SerializeField] Image _dangerLevelGauge;
+    [SerializeField] Image _enemyImageBox;
 
     ChapterNovelScenario _chapter;
     int _currentAnalysisLevel;
@@ -36,6 +37,7 @@ public class BattleManager : MonoBehaviour
         _currentAnalysisLevel = 0;
         _currentDangerLevel = 0;
         _currentBattleTurn = 0;
+        UIManager.Instance.DisplayImage(_chapter.Battle[0].BattleEnemyImage, _enemyImageBox);
     }
 
     /// <summary>
