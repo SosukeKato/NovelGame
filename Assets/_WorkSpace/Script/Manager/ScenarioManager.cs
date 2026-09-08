@@ -66,6 +66,8 @@ public class ScenarioManager : MonoBehaviour
     /// <param name="targetCommand"></param>
     public void JumpCommand(int targetCommand)
     {
+        _currentChapter = _scenarioDataBase.GetChapter(GameManager.instance.GameData.CurrentChapterID);
+
         _currentScenario = targetCommand;
         ReflectionScenario();
     }
