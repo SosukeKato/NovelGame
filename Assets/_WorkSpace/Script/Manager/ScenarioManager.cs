@@ -82,5 +82,8 @@ public class ScenarioManager : MonoBehaviour
         UIManager.Instance.DisplayEntityImage(_currentChapter.Scenario[_currentScenario].EnemyImage,_enemyImageBox);
         UIManager.Instance.DisplayText(_nameBox, _currentChapter.Scenario[_currentScenario].CharacterName);
         UIManager.Instance.DisplayText(_scenarioBox, _currentChapter.Scenario[_currentScenario].ScenarioText);
+        AudioManager.instance.PlayBGM(_currentChapter.Scenario[_currentScenario].BGM);
+        AudioManager.instance.PlaySE(_currentChapter.Scenario[_currentScenario].SE);
+        if (_currentChapter.Scenario[_currentScenario].StopBGM) AudioManager.instance.StopBGM();
     }
 }

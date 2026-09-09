@@ -43,6 +43,7 @@ public class BattleManager : MonoBehaviour
         UIManager.Instance.DisplayText(_playerActionTextBox, _chapter.Battle[0].CharacterAction);
         UIManager.Instance.UpdateGauge(_analysisLevelGauge, _currentAnalysisLevel);
         UIManager.Instance.UpdateGauge(_dangerLevelGauge, _currentDangerLevel);
+        AudioManager.instance.PlayBGM(_chapter.Battle[0].BattleBGM);
     }
 
     /// <summary>
@@ -64,8 +65,16 @@ public class BattleManager : MonoBehaviour
             UIManager.Instance.UpdateGauge(_dangerLevelGauge, _currentDangerLevel);
         }
 
-        if (_currentAnalysisLevel >= PARAMETER_MAX) BattleResultTransfer(true);
-        else if (_currentDangerLevel >= PARAMETER_MAX) BattleResultTransfer(false);
+        if (_currentAnalysisLevel >= PARAMETER_MAX)
+        {
+            BattleResultTransfer(true);
+            AudioManager.instance.StopBGM();
+        }
+        else if (_currentDangerLevel >= PARAMETER_MAX)
+        {
+            BattleResultTransfer(false);
+            AudioManager.instance.StopBGM();
+        }
         else _currentBattleTurn++;
     }
 
