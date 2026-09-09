@@ -25,9 +25,13 @@ public class UIManager : MonoBehaviour
     public void DisplayText(TextMeshProUGUI box,string text)
     {
         if (box == null) return;
-        if (text == null) box.color = new(255, 255, 255, 0);
+        if (text == null)
+        {
+            box.gameObject.SetActive(false);
+            return;
+        }
 
-        box.color = new(255, 255, 255, 255);
+        box.gameObject.SetActive(true);
         box.text = text;
     }
 
@@ -53,9 +57,16 @@ public class UIManager : MonoBehaviour
     public void DisplayEntityImage(Sprite image, Image imageBox)
     {
         if (imageBox == null) return;
-        if (image == null) imageBox.color = new(255, 255, 255, 0);
+        if (image == null)
+        {
+            imageBox.gameObject.SetActive(false);
+            return;
+        }
 
-        imageBox.color = new(255, 255, 255, 255);
+        float imageWidth = image.textureRect.width;
+        float imageHeight = image.textureRect.height;
+        imageBox.rectTransform.sizeDelta = new Vector2(imageWidth, imageHeight);
+        imageBox.gameObject.SetActive(true);
         imageBox.sprite = image;
     }
 
