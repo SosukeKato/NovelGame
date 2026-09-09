@@ -63,6 +63,9 @@ public class UIManager : MonoBehaviour
             return;
         }
 
+        float imageWidth = image.textureRect.width;
+        float imageHeight = image.textureRect.height;
+        imageBox.rectTransform.sizeDelta = new Vector2(imageWidth, imageHeight);
         imageBox.gameObject.SetActive(true);
         imageBox.sprite = image;
     }
