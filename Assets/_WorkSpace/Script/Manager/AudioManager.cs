@@ -4,6 +4,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; set; }
 
+    [SerializeField] AudioSource _bgmSource;
+    [SerializeField] AudioSource _seSource;
     void Awake()
     {
         if (instance == null)
@@ -17,30 +19,33 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// BGMçƒê∂
     /// </summary>
-    /// <param name="source"></param>
     /// <param name="bgm"></param>
-    public void PlayBGM(AudioSource source, AudioClip bgm)
+    public void PlayBGM(AudioClip bgm)
     {
-        source.clip = bgm;
-        source.Play();
+        if (bgm == null) return;
+
+        _bgmSource.clip = bgm;
+        _bgmSource.Play();
     }
 
     /// <summary>
     /// BGMèIóπ
     /// </summary>
     /// <param name="source"></param>
-    public void StopBGM(AudioSource source)
+    public void StopBGM()
     {
-        source?.Stop();
+        _bgmSource.Stop();
     }
 
     /// <summary>
     /// SEçƒê∂
     /// </summary>
-    /// <param name="source"></param>
+    /// <param name="_seSource"></param>
     /// <param name="se"></param>
-    public void PlaySE(AudioSource source, AudioClip se)
+    public void PlaySE(AudioClip se)
     {
-        source.PlayOneShot(se);
+        if (se == null) return;
+
+        _seSource.PlayOneShot(se);
     }
 }
