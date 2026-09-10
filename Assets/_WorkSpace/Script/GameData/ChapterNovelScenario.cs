@@ -27,6 +27,7 @@ public class BattleData
     public AudioClip BattleBGM;
     public Sprite BattleEnemyImage;
     public Sprite CharacterImage;
+    public Sprite BackGroundImage;
     [TextArea(3, 10)] public string CharacterAction;
     [TextArea(3, 10)] public string AcceptText;
     [TextArea(3, 10)] public string DeclineText;
