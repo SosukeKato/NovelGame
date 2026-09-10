@@ -10,6 +10,7 @@ public class UIButton : MonoBehaviour
     [SerializeField, Header("3rd")] GameObject _thirdUI;
     [SerializeField, Header("キャラクターの見た目反映用Image")] Image _characterImageBox;
     [SerializeField, Header("キャラクターの説明反映用Text")] TextMeshProUGUI _characterInfomationBox;
+    [SerializeField, Header("タイトルのボタンSE")] AudioClip _buttonSE;
 
     /// <summary>
     /// チャプターセレクトへ移行
@@ -18,6 +19,7 @@ public class UIButton : MonoBehaviour
     /// <param name="after"></param>
     public void ProceedChapterSelect()
     {
+        AudioManager.instance.PlaySE(_buttonSE);
         _firstUI.SetActive(false);
         _secondUI.SetActive(true);
     }
@@ -30,6 +32,7 @@ public class UIButton : MonoBehaviour
     /// <param name="id"></param>
     public void ProceedWaitStart(int id)
     {
+        AudioManager.instance.PlaySE(_buttonSE);
         CharacterData characterData = _scenarioDataBase.GetChapter(id).Character;
         _secondUI.SetActive(false);
         _characterInfomationBox.text = characterData.CharacterInfomation;
