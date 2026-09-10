@@ -14,6 +14,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Image _analysisLevelGauge;
     [SerializeField] Image _dangerLevelGauge;
     [SerializeField] Image _enemyImageBox;
+    [SerializeField] Image _bgImageBox;
     [SerializeField] TextMeshProUGUI _playerActionTextBox;
 
     ChapterNovelScenario _chapter;
@@ -39,6 +40,7 @@ public class BattleManager : MonoBehaviour
         _currentAnalysisLevel = 0;
         _currentDangerLevel = 0;
         _currentBattleTurn = 0;
+        UIManager.Instance.DisplayImage(_chapter.Battle[0].BackGroundImage, _bgImageBox);
         UIManager.Instance.DisplayEntityImage(_chapter.Battle[0].BattleEnemyImage, _enemyImageBox);
         UIManager.Instance.DisplayText(_playerActionTextBox, _chapter.Battle[0].CharacterAction);
         UIManager.Instance.UpdateGauge(_analysisLevelGauge, _currentAnalysisLevel);

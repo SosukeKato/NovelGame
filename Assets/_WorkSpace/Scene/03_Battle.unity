@@ -943,6 +943,7 @@ MonoBehaviour:
   _analysisLevelGauge: {fileID: 998248930}
   _dangerLevelGauge: {fileID: 1913803352}
   _enemyImageBox: {fileID: 761167383}
+  _bgImageBox: {fileID: 1309467045}
   _playerActionTextBox: {fileID: 1865781268}
 --- !u!4 &1220999880
 Transform:
