@@ -6,6 +6,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioSource _bgmSource;
     [SerializeField] AudioSource _seSource;
+    [SerializeField, Header("ƒ^ƒCƒgƒ‹‚ÌBGM")] AudioClip _titleBGM;
     void Awake()
     {
         if (instance == null)
@@ -14,6 +15,7 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
         else Destroy(this.gameObject);
+        PlayBGM(_titleBGM);
     }
 
     /// <summary>
